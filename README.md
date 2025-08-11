@@ -17,10 +17,7 @@ Welcome to the InsightPage application! This guide will help you understand its 
 
 ## Table of Contents
 
-*   [Overview](#1-overview)
-*   [Installation and Setup](#3-installation-and-setup)
-    *   [Installing the Latest Release (Recommended for Most Users)](#a-installing-the-latest-release-recommended-for-most-users)
-    *   [Installing from Source (For Developers or Advanced Users)](#b-installing-from-source-for-developers-or-advanced-users)
+*   [Overview](#overview)
 *   [InsightPage Application User Guide](#InsightPage-application-user-guide)
 *   [Core Chat Functionality](#core-chat-functionality)
     *   [Sending a Message](#sending-a-message)
