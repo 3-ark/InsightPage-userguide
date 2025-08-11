@@ -1,5 +1,5 @@
 # InsightPage-userguide
-## 1. Overview
+## Overview
 
 InsightPage is your intelligent browser assistant, designed to make your web experience smarter and more efficient. It acts as an AI Sidekick directly within your Chrome browser, offering features like:
 
