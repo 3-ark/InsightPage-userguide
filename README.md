@@ -2,17 +2,6 @@
 
 Welcome to the InsightPage application! This guide will help you understand its features and how to use them effectively.
 
-## ✨ What's New?
-
-This guide has been updated to include the latest powerful features added to InsightPage:
-
-*   **Advanced AI Capabilities**: InsightPage now has a `Smart Dispatcher` that can understand complex, multi-step tasks. It can create a plan and use a suite of tools (like Wikipedia search, web search, and a content fetcher) to execute it, giving you more comprehensive and intelligent answers.
-*   **Full Data Backup & Recovery**: You can now export your entire InsightPage dataset—including all notes, chat histories, and settings—into a single file for backup. You can easily import this file to restore your data on any machine.
-*   **Enhanced Note-Taking**:
-    *   **Full-Page Notes**: Open any note in a new browser tab for a spacious, focused writing and viewing experience.
-    *   **AI-Powered Editing**: Ask the AI to edit your notes directly from the side panel! You'll see a beautiful "diff" view of the changes in the full-page note editor, where you can accept or reject the AI's suggestions.
-    *   **Q&A With Your Notes**: Select multiple notes and ask questions about their content. The AI will use the selected notes as context to give you precise answers based on your own information.
-
 ## Table of Contents
 
 *   [Overview](#1-overview)
@@ -26,6 +15,7 @@ This guide has been updated to include the latest powerful features added to Ins
     *   [Opening Notes in a New Tab](#opening-notes-in-a-new-tab)
     *   [AI-Powered Note Editing](#ai-powered-note-editing)
     *   [Q&A with Your Notes](#qa-with-your-notes)
+    *   [Mermaid Diagram Support](#mermaid-diagram-support)
 *   [Advanced AI Capabilities](#5-advanced-ai-capabilities)
     *   [The Smart Dispatcher: Your AI Task Manager](#the-smart-dispatcher-your-ai-task-manager)
     *   [How It Works: Planner & Executor](#how-it-works-planner--executor)
@@ -40,9 +30,10 @@ This guide has been updated to include the latest powerful features added to Ins
 *   [Context Source Settings](#11-context-source-settings)
 *   [Text-to-Speech (TTS)](#12-text-to-speech-tts)
 *   [Themes & Appearance](#13-themes--appearance)
-*   [Personas (AI Personalities) 🥷](#14-personas-ai-personalities-)
-*   [Special Features](#15-special-features)
-*   [Troubleshooting](#16-troubleshooting)
+*   [Language Settings](#14-language-settings)
+*   [Personas (AI Personalities) 🥷](#15-personas-ai-personalities-)
+*   [Special Features](#16-special-features)
+*   [Troubleshooting](#17-troubleshooting)
 
 ## 1. Overview
 
@@ -198,6 +189,27 @@ You can use your existing notes as a knowledge base to get answers from the AI. 
 4.  Once you've selected your notes, click "Start Q&A".
 5.  You will be returned to the chat, and the input box will be pre-filled with mentions for the notes you selected (e.g., `@[Note Title 1] @[Note Title 2]`).
 6.  Simply add your question after the note mentions and send the message. The AI will answer based *only* on the content of the notes you provided.
+
+### Mermaid Diagram Support
+
+InsightPage supports rendering of diagrams and charts directly from text using the popular Mermaid syntax. This allows you to create flowcharts, sequence diagrams, Gantt charts, and more, directly within your notes.
+
+To create a diagram, simply create a Markdown code block with the `mermaid` language identifier, and write your Mermaid syntax inside it. For example:
+
+````markdown
+```mermaid
+graph TD;
+    A[Start] --> B{Is it?};
+    B -- Yes --> C[OK];
+    C --> D[End];
+    B -- No --> E[Don't];
+    E --> D[End];
+```
+````
+
+The application will automatically detect the Mermaid code block and render it as a visual diagram.
+
+For more information on the syntax and the types of diagrams you can create, please refer to the [official Mermaid documentation](https://mermaid.js.org/syntax/flowchart.html).
 
 ## 5. Advanced AI Capabilities
 
@@ -432,7 +444,16 @@ Within the "Customize" section, you can also find toggles for various visual ele
 *   Adjust the global font size for the application using a slider.
 *   The range is typically from 7px to 20px.
 
-## 14. Personas (AI Personalities) 🥷
+## 14. Language Settings
+
+You can change the display language of the InsightPage interface to your preferred language.
+
+1.  Open the main settings panel.
+2.  At the bottom of the settings panel, you will find the language switcher.
+3.  Click on the dropdown menu to see a list of available languages.
+4.  Select your desired language from the list. The application's interface will update instantly.
+
+## 15. Personas (AI Personalities) 🥷
 
 Personas allow you to define and switch between different personalities or roles for the AI, tailoring its responses and behavior. You can manage personas in the "Persona" section of the main settings panel, and quickly select an active persona from the slide-out menu.
 
@@ -477,7 +498,7 @@ InsightPage may offer a range of personas, each designed with a slightly differe
 *   **Spike:** All-around assistant - A versatile persona for various tasks.
 You can typically switch between personas in the InsightPage settings or directly within the side panel interface.
 
-## 15. Special Features
+## 16. Special Features
 
 The application includes several special features to enhance its contextual understanding and capabilities.
 
@@ -490,7 +511,7 @@ The application includes several special features to enhance its contextual unde
 *   As mentioned in the "Page Mode" section, when you are viewing a PDF document in your browser and activate Page Mode, the application will attempt to extract the text content from the PDF.
 *   This extracted text is then used as context for the AI, allowing you to ask questions about or summarize the PDF's content.
 
-## 16. Troubleshooting
+## 17. Troubleshooting
 
 _(This section will be populated with common issues and solutions if any are apparent from the existing documentation or if common patterns for such extensions are known. Initially, it might contain general advice.)_
 
