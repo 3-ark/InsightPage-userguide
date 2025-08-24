@@ -49,41 +49,7 @@ This guide will help you understand how to install, configure, and use InsightPa
 
 ## 2. Installation and Setup
 
-There are two main ways to install InsightPage:
-
-### A. Installing the Latest Release (Recommended for Most Users)
-
-1.  **Download:** Get the latest release package (usually a `.zip` file) from the [official InsightPage releases page](https://github.com/3-ark/InsightPage-AI_Sidekick/releases).
-2.  **Extract:** Unzip the downloaded file into a dedicated folder on your computer.
-3.  **Enable Developer Mode in Chrome:**
-    *   Open Chrome and navigate to `chrome://extensions`.
-    *   In the top-right corner, toggle on "Developer mode."
-4.  **Load the Extension:**
-    *   Click the "Load unpacked" button that appears after enabling Developer mode.
-    *   Select the folder where you extracted the InsightPage files.
-5.  InsightPage should now be installed and visible in your Chrome extensions list!
-
-### B. Installing from Source (For Developers or Advanced Users)
-
-1.  **Clone the Repository:**
-    ```bash
-    git clone https://github.com/3-ark/InsightPage-AI_Sidekick.git
-    ```
-2.  **Navigate to Directory:**
-    ```bash
-    cd InsightPage
-    ```
-3.  **Install Dependencies and Build:**
-    ```bash
-    npm install && npm start
-    ```
-    This command will install all necessary software packages and then build the extension. The compiled extension files will be located in a folder named `dist/chrome`.
-4.  **Enable Developer Mode in Chrome:** (If not already enabled)
-    *   Open Chrome and navigate to `chrome://extensions`.
-    *   Toggle on "Developer mode."
-5.  **Load the Extension:**
-    *   Click the "Load unpacked" button.
-    *   Select the `dist/chrome` folder from the cloned project directory.
+Chrome Web Store
 
 ## 3. Core Chat Functionality
 
