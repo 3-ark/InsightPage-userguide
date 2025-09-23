@@ -1,4 +1,4 @@
-![img](https://github.com/3-ark/InsightPage-userguide/blob/72e9c49739678882fd2a360fe35c24a6d1112552/insightPage.png)
+![https://github.com/3-ark/InsightPage-userguide/blob/72e9c49739678882fd2a360fe35c24a6d1112552/insightPage.png](https://raw.githubusercontent.com/3-ark/InsightPage-userguide/72e9c49739678882fd2a360fe35c24a6d1112552/insightPage.png)
 # InsightPage Application User Guide
 
 Welcome to the InsightPage application! This guide will help you understand its features and how to use them effectively.
