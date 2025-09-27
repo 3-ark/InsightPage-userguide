@@ -1,4 +1,4 @@
-**Privacy Policy for InsightPage – AI Reading & Note Companion for Work & Research**
+# Privacy Policy for InsightPage – AI Reading & Note Companion for Work & Research
 
 *Last Updated: [July 1st 2025]*
 
