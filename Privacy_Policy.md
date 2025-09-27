@@ -1,15 +1,12 @@
-**Privacy Policy for InsightPage – AI Reading & Note Companion for Work & Research
-**
+**Privacy Policy for InsightPage – AI Reading & Note Companion for Work & Research**
 
 *Last Updated: [July 1st 2025]*
 
-Thank you for using InsightPage – AI Reading & Note Companion for Work & Research
- ("the Extension"). We are committed to protecting your privacy. This Privacy Policy explains how your data is handled when you use our extension.
+Thank you for using InsightPage – AI Reading & Note Companion for Work & Research ("the Extension"). We are committed to protecting your privacy. This Privacy Policy explains how your data is handled when you use our extension.
 
 ### 1. No Personal Data Collection by the Extension
 
-InsightPage – AI Reading & Note Companion for Work & Research
- is designed with your privacy as a priority. The extension **does not** collect, store, or transmit any of your personal information, browsing history, or conversation logs. All your settings and data handled directly by the extension remain on your local device.
+InsightPage – AI Reading & Note Companion for Work & Research is designed with your privacy as a priority. The extension **does not** collect, store, or transmit any of your personal information, browsing history, or conversation logs. All your settings and data handled directly by the extension remain on your local device.
 
 ### 2. Data Processing and User Choice
 
