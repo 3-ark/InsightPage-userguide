@@ -28,8 +28,8 @@ Welcome to the InsightPage application! This guide will help you understand its 
 *   [Connecting to LLM Services (API Settings)](#8-connecting-to-llm-services-api-settings)
 *   [Model Management](#9-model-management)
 *   [Advanced Model Settings](#10-advanced-model-settings)
-*   [Context Source Settings](#11-context-source-settings)
-*   [Text-to-Speech (TTS)](#12-text-to-speech-tts)
+*   [Page and Web Mode Settings](#11-page-and-web-mode-settings)
+*   [Speech Settings](#12-speech-settings)
 *   [Themes & Appearance](#13-themes--appearance)
 *   [Language Settings](#14-language-settings)
 *   [Personas (AI Personalities) 🥷](#15-personas-ai-personalities-)
@@ -217,7 +217,11 @@ Here is a list of the core tools the `smart_dispatcher` can use:
 
 ## 6. Using RAG for Smart Search & Context
 
-InsightPage uses a powerful Retrieval-Augmented Generation (RAG) system to search your notes and chat history. This allows you to ask questions based on your own data. The system uses a hybrid approach, combining keyword-based search (BM25) with semantic search (via embeddings) for the best results. Here's how to set it up and use it.
+InsightPage uses a powerful Retrieval-Augmented Generation (RAG) system to search your notes and chat history. This allows you to ask questions based on your own data. The system uses a sophisticated **hybrid search** approach that combines the best of two worlds:
+*   **Keyword Search (BM25):** This traditional method is excellent at finding documents that contain the exact keywords from your query.
+*   **Semantic Search (Embeddings):** This modern approach uses AI models to understand the *meaning* behind your query and find conceptually related information, even if the exact words don't match.
+
+To further enhance the quality of the results, InsightPage incorporates a **Maximal Marginal Relevance (MMR) reranking** algorithm. After the initial hybrid search, MMR intelligently re-sorts the results to provide a set of documents that are not only relevant to your query but also diverse, reducing redundant information.
 
 ### 1. Navigate to RAG Settings
 *   Open the main menu by clicking your persona's avatar in the top-left.
@@ -340,37 +344,42 @@ Changes to these parameters are usually saved automatically.
     *   **Refresh Model List:** Manually trigger a re-fetch of models from your configured services.
     *   **Manage Model Visibility:** You might be able to hide or show specific models in the main selection dropdowns, helping you curate a shorter list of your preferred models. (The exact UI for this can vary).
 
-## 11. Context Source Settings
+## 11. Page and Web Mode Settings
 
 These settings control how much information from external sources (like web pages or search results) is provided to the AI.
 
 ### Page Mode Settings
-Located in the "Page Mode" or a similar section in settings:
-*   **Content Character Limit:** You can set a limit on the number of characters extracted from a webpage when using "Page Mode." This helps manage the amount of data sent to the AI and can affect performance and cost. 1 token equals to about 4 characters.
+Located in the "Page Mode" section in the settings panel:
+*   **Content Character Limit:** You can set a limit on the number of characters extracted from a webpage when using "Page Mode." This helps manage the amount of data sent to the AI and can affect performance and cost. 1 token equals about 4 characters.
+*   **Floating Action Button:** You can enable or disable the floating assistant button for Page Mode from here. See the "Floating Assistant" section for more details.
 
 ### Web Search Settings (for "Web Mode")
 Found in the "Web Search" or a similar section in settings:
 *   **Search Results Character Limit:** You can define the maximum number of characters from web search results that will be provided to the AI as context in "Web Mode."
 
-## 12. Text-to-Speech (TTS)
+## 12. Speech Settings
 
-The application can read AI messages aloud using your browser's built-in Text-to-Speech capabilities. You can manage TTS settings in the "Text-to-Speech" section of the settings panel.
+The application integrates both speech-to-text (input) and text-to-speech (output) functionalities. You can manage these in the "Speech Settings" section of the main settings panel.
 
-### Enabling and Configuration
+### Speech Recognition (Input / ASR)
+This feature allows you to speak directly to the application instead of typing.
+
+*   **Language Selection:** You can select your preferred language for speech recognition from a comprehensive list. This ensures the application accurately understands your speech in the chosen language.
+*   **Stop Word:** You can define a custom "stop word" (e.g., "stop," "terminate," "end"). When the application detects this word during speech input, it will automatically stop the recording. This provides a hands-free way to control the dictation process.
+
+### Text-to-Speech (Output / TTS)
+The application can read AI messages aloud using your browser's built-in Text-to-Speech capabilities.
+
 *   **Voice Selection**:
-    *   The application will automatically load available voices from your browser.
-    *   You can select your preferred voice from a dropdown list. The list usually displays the voice name and its language (e.g., "Google US English (en-US)").
-    *   If no voice is pre-selected in your configuration, an English voice or the first available voice in the list will typically be chosen as the default.
-    *   If no voices are available in your browser, or if they fail to load, a message will indicate this, and TTS functionality may be unavailable.
+    *   The application automatically loads available voices from your browser.
+    *   You can select your preferred voice from a dropdown list, which displays the voice name and its language (e.g., "Google US English (en-US)").
+    *   If no voice is pre-selected, an English voice or the first available voice will be chosen as the default.
 *   **Speech Rate**:
-    *   You can adjust the speed at which the AI's messages are spoken using a slider.
-    *   The typical range is from 0.5x (half speed) to 2.0x (double speed).
-    *   The currently selected rate is displayed next to the slider.
+    *   You can adjust the speed of the spoken messages using a slider, typically ranging from 0.5x to 2.0x speed.
 
 ### How it Works
-*   The TTS feature uses your browser's Web Speech API. Voice availability and quality can vary between browsers and operating systems. For users seeking more natural-sounding voices, using the Microsoft Edge browser (which has its own advanced TTS capabilities) or exploring third-party Chrome extensions/APIs that integrate local TTS services (such as Piper, Kokoro-FastAPI, or Orpheus-FastAPI) might provide an enhanced audio experience.
-*   When an AI message is received and TTS is active (the specific toggle/condition for TTS being active for message reading is usually found near the chat input or main settings), the `speakMessage` function is called.
-*   You can typically stop ongoing speech, and some controls might offer pause/resume, though these depend on browser support and how they are implemented in the main chat interface.
+*   The TTS feature uses your browser's Web Speech API. Voice availability and quality can vary between browsers and operating systems. For users seeking more natural-sounding voices, using the Microsoft Edge browser (which has its own advanced TTS capabilities) or exploring third-party Chrome extensions/APIs that integrate local TTS services might provide an enhanced audio experience.
+*   When an AI message is received and TTS is active, the `speakMessage` function is called. You can typically stop ongoing speech through the UI.
 
 ## 13. Themes & Appearance
 
@@ -494,18 +503,16 @@ Once enabled, a circular button will appear on the edge of your web pages.
 *   **Drag to Reposition:** You can click and drag the FAB to any position along the left or right edges of your browser window to ensure it never gets in your way.
 
 ### The Floating Window
-The Floating Window is a compact, movable chat interface that appears when you click the FAB. It's designed for quick, in-context conversations about the web page you are currently viewing.
+The Floating Window is a compact, movable chat interface that appears when you click the FAB. It's designed for quick, in-context conversations about the web page you are currently viewing. The window's header will display the title of the current page for easy reference.
 
 **Features:**
-*   **Ask About the Page:** The primary function is to ask questions, request summaries, or get insights about the content of the current page. The AI's responses are streamed directly into this window.
+*   **Automatic Page Summary:** When first opened, the window will often display an automated summary of the page, including a title, tags, a brief overview, and key question-answer pairs.
+*   **In-Context Chat:** You can ask questions, request summaries, or get insights about the content of the current page. The AI's responses are streamed directly into this window.
 *   **Reposition and Resize:**
     *   You can drag the window anywhere on the screen by clicking and holding its header.
     *   You can resize the window by dragging its corners or edges.
     *   Your preferred size and position are automatically saved, so the window will appear exactly where you like it next time you open it.
-*   **Quick Actions:** The window header contains buttons for quick actions:
-    *   **Refresh:** Clears the current conversation in the floating window.
-    *   **Open in Side Panel:** Transfers the current conversation and context over to the main side panel for a more detailed interaction.
-    *   **Close:** Hides the floating window and returns you to the FAB.
+*   **Close:** The header contains a close button to hide the floating window and return you to the FAB.
 
 This feature is perfect for when you need a quick answer or summary without breaking your reading flow.
 
