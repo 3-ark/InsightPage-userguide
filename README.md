@@ -34,7 +34,8 @@ Welcome to the InsightPage application! This guide will help you understand its 
 *   [Language Settings](#14-language-settings)
 *   [Personas (AI Personalities) 🥷](#15-personas-ai-personalities-)
 *   [Special Features](#16-special-features)
-*   [Troubleshooting](#17-troubleshooting)
+*   [Floating Assistant](#17-floating-assistant)
+*   [Troubleshooting](#18-troubleshooting)
 
 ## 1. Overview
 
@@ -49,7 +50,6 @@ InsightPage is your intelligent browser assistant, designed to make your web exp
 This guide will help you understand how to install, configure, and use InsightPage to its full potential.
 
 ## 2. Installation and Setup
-
 Chrome Web Store
 
 ## 3. Core Chat Functionality
@@ -208,7 +208,6 @@ Behind the scenes, the `smart_dispatcher` uses two key tools:
 Here is a list of the core tools the `smart_dispatcher` can use:
 
 *   **`prompt_optimizer`**: Improves and clarifies your initial prompt to ensure the AI understands the task perfectly.
-*   **`summarizer`**: Condenses long pieces of text (like articles or search results) into a concise summary focused on your original request.
 *   **`wikipedia_search`**: Performs a targeted search on Wikipedia for factual information, definitions, and general knowledge.
 *   **`retriever`**: Conducts a semantic search over your personal notes and chat history to find relevant information you've already saved.
 *   **`web_search`**: Searches the web using Google, DuckDuckGo, or Brave to find up-to-date information. It can run multiple queries at once.
@@ -345,9 +344,9 @@ Changes to these parameters are usually saved automatically.
 
 These settings control how much information from external sources (like web pages or search results) is provided to the AI.
 
-### Page Context Settings (for "Page Mode")
-Located in the "Page Context" or a similar section in settings:
-*   **Content Character Limit:** You can set a limit on the number of characters extracted from a webpage when using "Page Mode." This helps manage the amount of data sent to the AI and can affect performance and cost.
+### Page Mode Settings
+Located in the "Page Mode" or a similar section in settings:
+*   **Content Character Limit:** You can set a limit on the number of characters extracted from a webpage when using "Page Mode." This helps manage the amount of data sent to the AI and can affect performance and cost. 1 token equals to about 4 characters.
 
 ### Web Search Settings (for "Web Mode")
 Found in the "Web Search" or a similar section in settings:
@@ -478,7 +477,39 @@ The application includes several special features to enhance its contextual unde
 *   As mentioned in the "Page Mode" section, when you are viewing a PDF document in your browser and activate Page Mode, the application will attempt to extract the text content from the PDF.
 *   This extracted text is then used as context for the AI, allowing you to ask questions about or summarize the PDF's content.
 
-## 17. Troubleshooting
+## 17. Floating Assistant
+
+InsightPage includes a Floating Assistant, a powerful feature that brings the AI directly to your web page, allowing for seamless interaction without needing to open the side panel. It consists of a Floating Action Button (FAB) and a Floating Window.
+
+### Enabling the Floating Button
+You can enable the Floating Action Button from the settings menu:
+1.  Open the main slide-out menu and go to **Settings**.
+2.  Expand the **Page Mode Settings** section.
+3.  Toggle the switch for **Floating Action Button**.
+
+Once enabled, a circular button will appear on the edge of your web pages.
+
+### Using the Floating Action Button (FAB)
+*   **Click the FAB:** Clicking the button will instantly open the Floating Window, ready for you to interact with the page's content.
+*   **Drag to Reposition:** You can click and drag the FAB to any position along the left or right edges of your browser window to ensure it never gets in your way.
+
+### The Floating Window
+The Floating Window is a compact, movable chat interface that appears when you click the FAB. It's designed for quick, in-context conversations about the web page you are currently viewing.
+
+**Features:**
+*   **Ask About the Page:** The primary function is to ask questions, request summaries, or get insights about the content of the current page. The AI's responses are streamed directly into this window.
+*   **Reposition and Resize:**
+    *   You can drag the window anywhere on the screen by clicking and holding its header.
+    *   You can resize the window by dragging its corners or edges.
+    *   Your preferred size and position are automatically saved, so the window will appear exactly where you like it next time you open it.
+*   **Quick Actions:** The window header contains buttons for quick actions:
+    *   **Refresh:** Clears the current conversation in the floating window.
+    *   **Open in Side Panel:** Transfers the current conversation and context over to the main side panel for a more detailed interaction.
+    *   **Close:** Hides the floating window and returns you to the FAB.
+
+This feature is perfect for when you need a quick answer or summary without breaking your reading flow.
+
+## 18. Troubleshooting
 
 _(This section will be populated with common issues and solutions if any are apparent from the existing documentation or if common patterns for such extensions are known. Initially, it might contain general advice.)_
 
