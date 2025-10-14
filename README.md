@@ -32,7 +32,7 @@ Welcome to the InsightPage application! This guide will help you understand its 
 *   [Speech Settings](#12-speech-settings)
 *   [Themes & Appearance](#13-themes--appearance)
 *   [Language Settings](#14-language-settings)
-*   [Personas (AI Personalities) 🥷](#15-personas-ai-personalities-)
+*   [Personas (AI Personalities)](#15-personas-ai-personalities-)
 *   [Special Features](#16-special-features)
 *   [Floating Assistant](#17-floating-assistant)
 *   [Troubleshooting](#18-troubleshooting)
@@ -163,6 +163,7 @@ InsightPage supports rendering of diagrams and charts directly from text using t
 
 To create a diagram, simply create a Markdown code block with the `mermaid` language identifier, and write your Mermaid syntax inside it. For example:
 
+
 ````markdown
 ```mermaid
 graph TD;
@@ -174,9 +175,27 @@ graph TD;
 ```
 ````
 
+
 The application will automatically detect the Mermaid code block and render it as a visual diagram.
 
 For more information on the syntax and the types of diagrams you can create, please refer to the [official Mermaid documentation](https://mermaid.js.org/syntax/flowchart.html).
+
+### Code Block with Syntax Highlighting
+
+You can also embed code snippets with full syntax highlighting to make them more readable. This is perfect for sharing code, configuration files, or command-line instructions.
+
+To create a highlighted code block, use a standard Markdown fenced code block and specify the language identifier after the opening backticks. For example:
+
+````markdown
+```javascript
+function greet(name) {
+  // This is a javascript code block
+  return `Hello, ${name}!`;
+}
+```
+````
+
+The application supports a wide variety of languages (e.g., `javascript`, `python`, `html`, `css`, `json`, `bash`).
 
 ## 5. Advanced AI Capabilities
 
@@ -352,9 +371,9 @@ These settings control how much information from external sources (like web page
 Located in the "Page Mode" section in the settings panel:
 *   **Content Character Limit:** You can set a limit on the number of characters extracted from a webpage when using "Page Mode." This helps manage the amount of data sent to the AI and can affect performance and cost. 1 token equals about 4 characters.
 *   **Floating Action Button:** You can enable or disable the floating assistant button for Page Mode from here. See the "Floating Assistant" section for more details.
-
+*   **Floating Action Button:** You can enable or disable a floating button on web pages that allows you to quickly activate "Page Mode" and analyze the current page.
 ### Web Search Settings (for "Web Mode")
-Found in the "Web Search" or a similar section in settings:
+Found in the "Web Search" in settings:
 *   **Search Results Character Limit:** You can define the maximum number of characters from web search results that will be provided to the AI as context in "Web Mode."
 
 ## 12. Speech Settings
@@ -371,15 +390,19 @@ This feature allows you to speak directly to the application instead of typing.
 The application can read AI messages aloud using your browser's built-in Text-to-Speech capabilities.
 
 *   **Voice Selection**:
-    *   The application automatically loads available voices from your browser.
-    *   You can select your preferred voice from a dropdown list, which displays the voice name and its language (e.g., "Google US English (en-US)").
-    *   If no voice is pre-selected, an English voice or the first available voice will be chosen as the default.
+    *   The application will automatically load available voices from your browser.
+    *   You can select your preferred voice from a dropdown list. The list usually displays the voice name and its language (e.g., "Google US English (en-US)").
+    *   If no voice is pre-selected in your configuration, an English voice or the first available voice in the list will typically be chosen as the default.
+    *   If no voices are available in your browser, or if they fail to load, a message will indicate this, and TTS functionality may be unavailable.
 *   **Speech Rate**:
-    *   You can adjust the speed of the spoken messages using a slider, typically ranging from 0.5x to 2.0x speed.
+    *   You can adjust the speed at which the AI's messages are spoken using a slider.
+    *   The typical range is from 0.5x (half speed) to 2.0x (double speed).
+    *   The currently selected rate is displayed next to the slider.
 
 ### How it Works
-*   The TTS feature uses your browser's Web Speech API. Voice availability and quality can vary between browsers and operating systems. For users seeking more natural-sounding voices, using the Microsoft Edge browser (which has its own advanced TTS capabilities) or exploring third-party Chrome extensions/APIs that integrate local TTS services might provide an enhanced audio experience.
-*   When an AI message is received and TTS is active, the `speakMessage` function is called. You can typically stop ongoing speech through the UI.
+*   The TTS feature uses your browser's Web Speech API. Voice availability and quality can vary between browsers and operating systems. For users seeking more natural-sounding voices, using the Microsoft Edge browser (which has its own advanced TTS capabilities) or exploring third-party Chrome extensions/APIs that integrate local TTS services (such as Piper, Kokoro-FastAPI, or Orpheus-FastAPI) might provide an enhanced audio experience.
+*   When an AI message is received and TTS is active (the specific toggle/condition for TTS being active for message reading is usually found near the chat input or main settings), the `speakMessage` function is called.
+*   You can typically stop ongoing speech, and some controls might offer pause/resume, though these depend on browser support and how they are implemented in the main chat interface.
 
 ## 13. Themes & Appearance
 
@@ -428,7 +451,7 @@ You can change the display language of the InsightPage interface to your preferr
 3.  Click on the dropdown menu to see a list of available languages.
 4.  Select your desired language from the list. The application's interface will update instantly.
 
-## 15. Personas (AI Personalities) 🥷
+## 15. Personas (AI Personalities) 
 
 Personas allow you to define and switch between different personalities or roles for the AI, tailoring its responses and behavior. You can manage personas in the "Persona" section of the main settings panel, and quickly select an active persona from the slide-out menu.
 
@@ -499,20 +522,24 @@ You can enable the Floating Action Button from the settings menu:
 Once enabled, a circular button will appear on the edge of your web pages.
 
 ### Using the Floating Action Button (FAB)
-*   **Click the FAB:** Clicking the button will instantly open the Floating Window, ready for you to interact with the page's content.
+*   **Click the FAB:** Clicking the button will instantly open the Floating Window.
+*   **Use the Shortcut:** You can also open the window with a keyboard shortcut (default is **Alt+I**). You can customize this shortcut in the "Page Mode Settings".
 *   **Drag to Reposition:** You can click and drag the FAB to any position along the left or right edges of your browser window to ensure it never gets in your way.
 
 ### The Floating Window
 The Floating Window is a compact, movable chat interface that appears when you click the FAB. It's designed for quick, in-context conversations about the web page you are currently viewing. The window's header will display the title of the current page for easy reference.
 
 **Features:**
-*   **Automatic Page Summary:** When first opened, the window will often display an automated summary of the page, including a title, tags, a brief overview, and key question-answer pairs.
-*   **In-Context Chat:** You can ask questions, request summaries, or get insights about the content of the current page. The AI's responses are streamed directly into this window.
+*   **Automatic Page Summary:** When first opened on a page, the window can display an automated summary, helping you grasp key information instantly.
+*   **Ask About the Page:** The primary function is to ask questions, request summaries, or get insights about the content of the current page. The AI's responses are streamed directly into this window.
 *   **Reposition and Resize:**
     *   You can drag the window anywhere on the screen by clicking and holding its header.
     *   You can resize the window by dragging its corners or edges.
     *   Your preferred size and position are automatically saved, so the window will appear exactly where you like it next time you open it.
-*   **Close:** The header contains a close button to hide the floating window and return you to the FAB.
+*   **Quick Actions:** The window header contains buttons for quick actions:
+    *   **Refresh:** Clears the current conversation in the floating window.
+    *   **Open in Side Panel:** Transfers the current conversation and context over to the main side panel for a more detailed interaction.
+    *   **Close:** Hides the floating window and returns you to the FAB.
 
 This feature is perfect for when you need a quick answer or summary without breaking your reading flow.
 
