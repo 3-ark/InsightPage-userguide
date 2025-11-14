@@ -1,4 +1,4 @@
-![insightpage](https://raw.githubusercontent.com/3-ark/InsightPage-userguide/refs/heads/page/InsightPage.png)
+![insightpage](https://raw.githubusercontent.com/3-ark/InsightPage-userguide/refs/heads/page/insightpage.png)
 # InsightPage Application User Guide
 
 Welcome to the InsightPage application! This guide will help you understand its features and how to use them effectively.
