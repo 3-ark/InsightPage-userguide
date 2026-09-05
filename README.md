@@ -1,564 +1,204 @@
-![insightpage](https://raw.githubusercontent.com/3-ark/InsightPage-userguide/refs/heads/page/insightpage.png)
 # InsightPage Application User Guide
 
-Welcome to the InsightPage application! This guide will help you understand its features and how to use them effectively.
-
-## Table of Contents
-
-*   [Overview](#1-overview)
-*   [Installation and Setup](#2-installation-and-setup)
-*   [Core Chat Functionality](#3-core-chat-functionality)
-*   [Note-Taking Features](#4-note-taking-features)
-    *   [Appending Selected Text to Popover Note](#appending-selected-text-to-popover-note)
-    *   [AI-Powered Note Saving (`saveNote` Tool)](#ai-powered-note-saving-savenote-tool)
-    *   [AI-Powered Memory Updates (`updateMemory` Tool)](#ai-powered-memory-updates-updatememory-tool)
-    *   [Searching Notes](#searching-notes)
-    *   [Opening Notes in a New Tab](#opening-notes-in-a-new-tab)
-    *   [AI-Powered Note Editing](#ai-powered-note-editing)
-    *   [Q&A with Your Notes](#qa-with-your-notes)
-    *   [Mermaid Diagram Support](#mermaid-diagram-support)
-*   [Advanced AI Capabilities](#5-advanced-ai-capabilities)
-    *   [The Smart Dispatcher: Your AI Task Manager](#the-smart-dispatcher-your-ai-task-manager)
-    *   [How It Works: Planner & Executor](#how-it-works-planner--executor)
-    *   [Available Tools Reference](#available-tools-reference)
-*   [Using RAG for Smart Search & Context](#6-using-rag-for-smart-search--context)
-*   [Data Management](#7-data-management)
-    *   [Full Backup and Restore](#full-backup-and-restore)
-    *   [Exporting Individual Chats](#exporting-individual-chats)
-*   [Connecting to LLM Services (API Settings)](#8-connecting-to-llm-services-api-settings)
-*   [Model Management](#9-model-management)
-*   [Advanced Model Settings](#10-advanced-model-settings)
-*   [Page and Web Mode Settings](#11-page-and-web-mode-settings)
-*   [Speech Settings](#12-speech-settings)
-*   [Themes & Appearance](#13-themes--appearance)
-*   [Language Settings](#14-language-settings)
-*   [Personas (AI Personalities)](#15-personas-ai-personalities-)
-*   [Special Features](#16-special-features)
-*   [Floating Assistant](#17-floating-assistant)
-*   [Troubleshooting](#18-troubleshooting)
-
-## 1. Overview
-
-InsightPage is your intelligent browser assistant, designed to make your web experience smarter and more efficient. It acts as an AI Sidekick directly within your Chrome browser, offering features like:
-
-*   Instant summaries of web pages.
-*   Intelligent interactions: Ask questions about what you're reading, content from URLs, PDFs, or your notes.
-*   Smart web search capabilities.
-*   Flexible AI integration: Connect to powerful local AI models (like Ollama or LM Studio) or cloud-based services (OpenAI, Gemini).
-*   And much more!
-
-This guide will help you understand how to install, configure, and use InsightPage to its full potential.
-
-## 2. Installation and Setup
-Chrome Web Store
-
-## 3. Core Chat Functionality
-
-This section covers the basic chat features of the application.
-
-### Sending a Message
-To start interacting with the AI, simply type your message in the input field at the bottom of the chat panel and press Enter or click the send button.
-
-### Chat Modes
-The application offers different modes to tailor the AI's responses based on your needs:
-
-*   **Standard Chat Mode (`chat`)**: This is the default mode. The AI will respond based on its general knowledge and the conversation history.
-*   **Web Mode (`web`)**: When in this mode, the AI will first perform a web search based on your query. To provide more comprehensive answers, Web Mode goes beyond just using search snippets; it can actively visit the top few search result pages, fetch their main content, and use this deeper information as context. The application may also optimize your query behind the scenes to get better search results.
-*   **Page Mode (`page`)**: In this mode, the AI will use the content of the currently active browser tab (webpage or PDF) as context for its responses. You can ask questions or request summaries about this content. Additionally, InsightPage can understand questions about text within your InsightPage notes or content from URLs you provide directly in the chat. Often, a dedicated "Summarize this page" button or command is available for quick summaries.
-
-### Using Your Notes as Context
-You can allow the AI to use the content of your popover note as additional context for its responses. Toggle the "Use Note" option in the settings. When enabled, the information in your popover note will be considered by the AI, which can be helpful for remembering preferences or specific details you'vesaved.
-
-### Searching Chat History
-If you need to find past conversations, you can use the search feature within the Chat History view:
-*   **Accessing Search:** When you open the Chat History panel, you'll find a search input field at the top.
-*   **What is Searched:** The search looks through:
-    *   The titles of your saved chats.
-    *   The content of the messages within each chat.
-*   **How to Use:** Type your keywords into the search field. The list of chats will update dynamically to show only those that match your query.
-*   Search is case-insensitive.
-*   If no chats match your query, a "No results found" message will be displayed.
-*   The search results are paginated if they span multiple pages.
-
-### Automatic Chat Title Generation
-The application automatically generates a concise title for new chats based on the initial messages. This helps you quickly identify past conversations. If a title isn't generated, or if you'd like to change it, you can typically do so manually (details may vary based on your specific version of the application).
-
-## 4. Note-Taking Features
-
-The application provides several ways to take and manage notes. These notes are particularly valuable because they can be saved and later injected as context for the AI. For example, you can save key data points in a note and then instruct InsightPage to use this specific information when answering a question, comparing information, or generating content.
-
-### Appending Selected Text to Popover Note
-You can quickly add text from web pages to your popover note:
-1.  Select the text you want to save on any webpage.
-2.  Right-click and choose the option to "Add to Note" (the exact wording might vary).
-3.  The selected text will be appended to your current popover note. If the note is empty, the selected text will become its content. A separator is added if there's existing content.
-
-### AI-Powered Note Saving (`saveNote` Tool)
-The AI can help you create more structured notes based on your conversation:
-*   **How it works**: If you ask the AI to remember something important, take a note on a specific topic, or summarize key decisions, it can use its `saveNote` tool.
-*   **Features**:
-    *   The AI can create a note with a specific `content`.
-    *   It can assign a `title` to the note (or a default one will be generated).
-    *   It can add `tags` (e.g., `["project-alpha", "meeting-summary"]`) to help categorize the note.
-*   **Where are they saved?**: These notes are saved in the application's persistent note storage system, separate from the quick popover note. You can view them in the "Notes" section or a similar area in the application.
-
-### AI-Powered Memory Updates (`updateMemory` Tool)
-The AI can also remember specific pieces of information or summaries by adding them to your popover note, which acts as a persistent "memory":
-*   **How it works**: If you provide the AI with a piece of information you want it (and yourself) to remember for later, like a preference, a fact about you, or a key takeaway from the current chat, it can use its `updateMemory` tool.
-*   **Features**:
-    *   The AI will append a `summary` of the information to your existing popover note.
-    *   A timestamp is typically added to the summary (e.g., "User prefers concise answers. (on YYYY-MM-DD)").
-*   **Purpose**: This helps the AI maintain context over longer interactions and allows you to easily refer back to important details you've asked it to remember.
-
-### Searching Notes
-The Note System also includes a search function to help you quickly find specific notes:
-*   **Accessing Search:** In the Note System view, a search input field is available at the top.
-*   **What is Searched:** The search scans through:
-    *   The titles of your notes.
-    *   The content of your notes.
-    *   The tags associated with your notes.
-*   **How to Use:** Enter your search terms in the input field. The displayed notes will filter in real-time.
-*   Search is case-insensitive.
-*   A "No notes found" message will appear if your query doesn't match any notes.
-*   Results are paginated.
-
-### Opening Notes in a New Tab
-
-For a more focused and spacious editing experience, you can open any note in a new browser tab.
-
-1.  Navigate to the "Note System" view from the main menu.
-2.  Find the note you wish to open.
-3.  Click the "Open in new tab" icon (usually a box with an arrow) next to the note title.
-
-This will open the note in a full-page editor where you can view and edit your markdown content without the distraction of the side panel. The full-page view also includes font size controls for comfortable reading.
-
-### AI-Powered Note Editing
-
-InsightPage can help you refine and improve your notes using the power of AI.
-
-1.  First, open the note you want to edit in a **new tab** (see above).
-2.  With the note-viewer tab active, go back to the InsightPage side panel.
-3.  In the chat input bar, simply ask the AI to perform an edit. For example:
-    *   *"Correct the grammar and spelling in this note."*
-    *   *"Rewrite this note to be more concise."*
-    *   *"Translate this note to Spanish."*
-4.  The AI will process your request and generate a new version of the note.
-5.  Switch back to your note-viewer tab. You will now see a **Diff View**, with your original note on one side and the AI's suggested changes on the other.
-6.  You can review the differences and choose to **Accept** the changes to update your note, or **Decline** them to keep your original version.
-
-### Q&A with Your Notes
-
-You can use your existing notes as a knowledge base to get answers from the AI. This is perfect for querying meeting notes, project plans, or saved research.
-
-1.  From the main chat interface, open the "Note System" view.
-2.  You will see a "Select Notes for Q&A" option or a similar button. Click it.
-3.  A selection interface will appear. Check the box next to each note you want the AI to use as context.
-4.  Once you've selected your notes, click "Start Q&A".
-5.  You will be returned to the chat, and the input box will be pre-filled with mentions for the notes you selected (e.g., `@[Note Title 1] @[Note Title 2]`).
-6.  Simply add your question after the note mentions and send the message. The AI will answer based *only* on the content of the notes you provided.
-
-### Mermaid Diagram Support
-
-InsightPage supports rendering of diagrams and charts directly from text using the popular Mermaid syntax. This allows you to create flowcharts, sequence diagrams, Gantt charts, and more, directly within your notes.
-
-To create a diagram, simply create a Markdown code block with the `mermaid` language identifier, and write your Mermaid syntax inside it. For example:
-
-
-````markdown
-```mermaid
-graph TD;
-    A[Start] --> B{Is it?};
-    B -- Yes --> C[OK];
-    C --> D[End];
-    B -- No --> E[Don't];
-    E --> D[End];
-```
-````
-
-
-The application will automatically detect the Mermaid code block and render it as a visual diagram.
-
-For more information on the syntax and the types of diagrams you can create, please refer to the [official Mermaid documentation](https://mermaid.js.org/syntax/flowchart.html).
-
-### Code Block with Syntax Highlighting
-
-You can also embed code snippets with full syntax highlighting to make them more readable. This is perfect for sharing code, configuration files, or command-line instructions.
-
-To create a highlighted code block, use a standard Markdown fenced code block and specify the language identifier after the opening backticks. For example:
-
-````markdown
-```javascript
-function greet(name) {
-  // This is a javascript code block
-  return `Hello, ${name}!`;
-}
-```
-````
-
-The application supports a wide variety of languages (e.g., `javascript`, `python`, `html`, `css`, `json`, `bash`).
-
-## 5. Advanced AI Capabilities
-
-InsightPage has been upgraded with a powerful suite of tools that allows the AI to handle complex, multi-step tasks with greater intelligence and autonomy. This system, centered around a `smart_dispatcher`, can create plans and execute them to provide you with comprehensive answers.
-
-### The Smart Dispatcher: Your AI Task Manager
-
-The `smart_dispatcher` is the brain of the operation. When you give InsightPage a complex task, the dispatcher analyzes your request and determines the best sequence of tools to use to accomplish your goal.
-
-For example, if you ask: *"Research the key differences between GraphQL and REST, and then create a note summarizing the pros and cons of each."*
-
-The `smart_dispatcher` will automatically activate and coordinate other tools to:
-1.  Perform web searches for "GraphQL vs REST", "GraphQL pros and cons", and "REST pros and cons".
-2.  Fetch and read the content of the most relevant articles.
-3.  Summarize the collected information.
-4.  Create a new note with the summary, complete with a title and tags.
-
-You don't need to call the dispatcher manually; it activates when it detects a task that requires multiple steps.
-
-### How It Works: Planner & Executor
-
-Behind the scenes, the `smart_dispatcher` uses two key tools:
-
-*   **`planner`**: This tool takes your complex task and breaks it down into a logical, step-by-step JSON plan. Each step in the plan is a specific call to one of the available tools.
-*   **`executor`**: Once the plan is created, the `executor` tool takes over. It systematically executes each tool call in the plan, feeding the output of one step as input to the next, until the mission is complete.
-
-### Available Tools Reference
-
-Here is a list of the core tools the `smart_dispatcher` can use:
-
-*   **`prompt_optimizer`**: Improves and clarifies your initial prompt to ensure the AI understands the task perfectly.
-*   **`wikipedia_search`**: Performs a targeted search on Wikipedia for factual information, definitions, and general knowledge.
-*   **`retriever`**: Conducts a semantic search over your personal notes and chat history to find relevant information you've already saved.
-*   **`web_search`**: Searches the web using Google, DuckDuckGo, or Brave to find up-to-date information. It can run multiple queries at once.
-*   **`fetcher`**: Retrieves the full text content from a specific URL. This is useful for summarizing articles or getting information from a page you provide.
-*   **`save_note`**: Creates a new, structured note in your note system with a title, content, and tags.
-*   **`update_memory`**: Appends a short piece of information to your popover note, which acts as a quick "memory" for the AI.
-
-## 6. Using RAG for Smart Search & Context
-
-InsightPage uses a powerful Retrieval-Augmented Generation (RAG) system to search your notes and chat history. This allows you to ask questions based on your own data. The system uses a sophisticated **hybrid search** approach that combines the best of two worlds:
-*   **Keyword Search (BM25):** This traditional method is excellent at finding documents that contain the exact keywords from your query.
-*   **Semantic Search (Embeddings):** This modern approach uses AI models to understand the *meaning* behind your query and find conceptually related information, even if the exact words don't match.
-
-To further enhance the quality of the results, InsightPage incorporates a **Maximal Marginal Relevance (MMR) reranking** algorithm. After the initial hybrid search, MMR intelligently re-sorts the results to provide a set of documents that are not only relevant to your query but also diverse, reducing redundant information.
-
-### 1. Navigate to RAG Settings
-*   Open the main menu by clicking your persona's avatar in the top-left.
-*   Click the **Settings** button to open the full configuration panel.
-*   Find and expand the **RAG Settings** section.
-
-### 2. Configure Your Embedding Model
-This is the most critical step for good performance. In the "RAG Settings" panel, select an embedding model.
-*   **For Local Models:** If you are using a local model (e.g., via Ollama), make sure the model is running *before* you start the embedding process.
-*   **Important:** You must use the same embedding model for creating the embeddings and for querying them later.
-
-### 3. Generate Embeddings for Your Data
-InsightPage needs to process your notes and chats to create searchable embeddings. You have two modes for this, configured in "RAG Settings":
-*   **Manual Mode (Default):** You control when embeddings are created. This is recommended to avoid unnecessary processing and costs (for API models).
-*   **Automatic Mode:** Embeddings are automatically created or updated whenever you save a note or chat. This is more convenient but requires your embedding model to be constantly available if it's a local one.
-
-**First-Time Setup:** Go to the main slide-out menu (click the avatar). In the "Embedding Management" section, click the **Rebuild** button. This will process all your existing notes and chats. This may take some time.
-
-### 4. Keeping Your Index Up-to-Date
-*   **BM25 (Keyword) Index:** This updates automatically as you add or change notes and chats.
-*   **Embeddings (Semantic) Index:**
-    *   In **Manual Mode**, you need to periodically click the **Update** button in the "Embedding Management" section of the main menu. This will process only the new or changed items, which is faster than a full rebuild.
-    *   In **Automatic Mode**, this happens in the background.
-
-### 5. Query Your Data with RAG
-In the main chat input bar, type `/r` followed by your search query.
-*   **Example:** `/r what were the key points from the project alpha meeting?`
-*   InsightPage will search your knowledge base, find the most relevant information, and feed it to the LLM as context to answer your question.
-
-### 6. Quick Search from the Main Menu
-You can perform a quick test search directly from the main slide-out menu. Use the search bar at the top to see instant results from your notes and chats.
-
-### A Note on Language Support
-*   **Keyword Search (BM25):** Has excellent support for Latin-based languages. Cyrillic, Korean, Arabic, and Devanagari are also well-supported. Japanese performance is similar to Latin languages.
-*   **Semantic Search (Embeddings):** The quality of search for any language depends entirely on the embedding model you choose. A model trained on your target language is crucial for good results.
-
-## 7. Data Management
-
-InsightPage provides robust options for backing up, restoring, and exporting your data.
-
-### Full Backup and Restore
-
-You can save your entire InsightPage instance—including all chats, notes, and settings—and restore it on another browser or machine. This is perfect for migrating your setup or recovering from a problem.
-
-**To Export Your Data (Backup):**
-
-1.  In the header of the side panel, click the **Share** button (a box with an arrow).
-2.  In the dropdown menu, hover over **Backup**.
-3.  Click on **Export Data**.
-4.  A `.zip` file containing all your application data will be downloaded. The file will be named `InsightPage-Backup-[date].zip`. Keep this file in a safe place.
-
-**To Import Your Data (Restore):**
-
-**Warning:** Importing a backup will completely overwrite all existing data in your InsightPage extension.
-
-1.  Click the **Share** button in the header.
-2.  Hover over **Backup** and click on **Import Data**.
-3.  Select the `InsightPage-Backup.zip` file you previously exported.
-4.  The application will process the file, restore your data, and then reload itself. Your notes, chat history, and settings will be restored.
-
-### Exporting Individual Chats
-
-If you only need to save a single conversation, you can export it in various formats.
-
-1.  While in a chat, click the **Share** button in the header.
-2.  Hover over **Export Chat**.
-3.  Choose your desired format:
-    *   **`.md`**: A Markdown file, preserving formatting.
-    *   **`.txt`**: A plain text file.
-    *   **`.json`**: A structured JSON file containing all message data.
-    *   **`.png`**: An image of the chat conversation.
-
-## 8. Connecting to LLM Services (API Settings)
-
-To use the AI, you first need to connect the application to one or more Large Language Model (LLM) providers. This is done in the "API Access" or "Connect" section of the main settings panel. For each supported service, you may need to provide an API Key or a specific Endpoint URL.
-
-Supported services and their typical requirements include:
-*   **OpenAI:** Requires an API key.
-*   **Ollama:** Requires the URL of your Ollama server (e.g., `http://localhost:11434`). The app will then attempt to fetch models from this server.
-*   **Groq:** Requires a Groq API key.
-*   **Gemini (Google):** Requires a Gemini API key.
-*   **OpenRouter:** Requires an OpenRouter API key.
-*   **LM Studio:** Requires the URL of your LM Studio server (e.g., `http://localhost:1234`).
-*   **Custom Endpoint:** Allows you to connect to other OpenAI-compatible APIs by providing the base URL and an optional API key.
-
-Ensure you save your settings after entering API keys or URLs. The application will use these to fetch available models and communicate with the LLMs.
-
-## 9. Model Management
-
-The application allows you to connect to and switch between different Large Language Models (LLMs) from various providers. InsightPage offers the flexibility to choose your preferred AI engine by supporting two main types of connections, allowing you to balance power, privacy, and cost:
-
-*   **Local Models (e.g., Ollama, LM Studio):** If you have AI models running locally on your computer, InsightPage can connect to them. This is an excellent option for users who prioritize data privacy, want to use specialized open-source models, or need offline access.
-*   **Cloud Services (e.g., OpenAI, Gemini):** You can also configure InsightPage to use powerful cloud-based AI services. This option often gives you access to the latest, largest, and most capable models.
-
-Configuration for these different AI models will typically be found in InsightPage's settings panel, detailed in the "Connecting to LLM Services (API Settings)" section.
-
-### Fetching and Selecting Models
-*   Once a provider is configured and enabled (see below), the application will attempt to fetch a list of available models from it.
-*   All available models from your configured providers will be aggregated into a single list.
-*   You can then select your preferred model from this list in the settings panel. The chosen model will be used for all subsequent chat interactions.
-*   The list of models is periodically updated. If your currently selected model becomes unavailable, the application will attempt to select another one (usually the first in the list).
-
-## 10. Advanced Model Settings
-
-Beyond just selecting a model, you can often fine-tune its behavior and manage your model list in the "Model Settings" or a similarly named section within the main settings panel.
-
-### Model Interaction Parameters
-You can adjust parameters that influence how the AI generates responses. These settings usually apply to the currently selected model or globally:
-
-*   **Temperature:** Controls the randomness of the AI's output. Higher values (e.g., 0.8-1.0) make responses more creative and diverse but potentially less factual. Lower values (e.g., 0.2-0.5) make responses more focused, deterministic, and conservative.
-*   **Max Tokens:** Sets the maximum length of the AI's response in tokens (pieces of words).
-*   **Top P (Nucleus Sampling):** An alternative to temperature for controlling randomness. It considers only the most probable tokens whose cumulative probability mass exceeds a threshold 'P'.
-*   **Presence Penalty:** Influences how much the AI tries to avoid repeating topics or phrases already mentioned in the conversation.
-
-Changes to these parameters are usually saved automatically.
-
-### Model List Management (Visibility/Enabled Models)
-*   After connecting to LLM services, the application fetches a list of available models.
-*   This section may allow you to:
-    *   **Refresh Model List:** Manually trigger a re-fetch of models from your configured services.
-    *   **Manage Model Visibility:** You might be able to hide or show specific models in the main selection dropdowns, helping you curate a shorter list of your preferred models. (The exact UI for this can vary).
-
-## 11. Page and Web Mode Settings
-
-These settings control how much information from external sources (like web pages or search results) is provided to the AI.
-
-### Page Mode Settings
-Located in the "Page Mode" section in the settings panel:
-*   **Content Character Limit:** You can set a limit on the number of characters extracted from a webpage when using "Page Mode." This helps manage the amount of data sent to the AI and can affect performance and cost. 1 token equals about 4 characters.
-*   **Floating Action Button:** You can enable or disable the floating assistant button for Page Mode from here. See the "Floating Assistant" section for more details.
-*   **Floating Action Button:** You can enable or disable a floating button on web pages that allows you to quickly activate "Page Mode" and analyze the current page.
-### Web Search Settings (for "Web Mode")
-Found in the "Web Search" in settings:
-*   **Search Results Character Limit:** You can define the maximum number of characters from web search results that will be provided to the AI as context in "Web Mode."
-
-## 12. Speech Settings
-
-The application integrates both speech-to-text (input) and text-to-speech (output) functionalities. You can manage these in the "Speech Settings" section of the main settings panel.
-
-### Speech Recognition (Input / ASR)
-This feature allows you to speak directly to the application instead of typing.
-
-*   **Language Selection:** You can select your preferred language for speech recognition from a comprehensive list. This ensures the application accurately understands your speech in the chosen language.
-*   **Stop Word:** You can define a custom "stop word" (e.g., "stop," "terminate," "end"). When the application detects this word during speech input, it will automatically stop the recording. This provides a hands-free way to control the dictation process.
-
-### Text-to-Speech (Output / TTS)
-The application can read AI messages aloud using your browser's built-in Text-to-Speech capabilities.
-
-*   **Voice Selection**:
-    *   The application will automatically load available voices from your browser.
-    *   You can select your preferred voice from a dropdown list. The list usually displays the voice name and its language (e.g., "Google US English (en-US)").
-    *   If no voice is pre-selected in your configuration, an English voice or the first available voice in the list will typically be chosen as the default.
-    *   If no voices are available in your browser, or if they fail to load, a message will indicate this, and TTS functionality may be unavailable.
-*   **Speech Rate**:
-    *   You can adjust the speed at which the AI's messages are spoken using a slider.
-    *   The typical range is from 0.5x (half speed) to 2.0x (double speed).
-    *   The currently selected rate is displayed next to the slider.
-
-### How it Works
-*   The TTS feature uses your browser's Web Speech API. Voice availability and quality can vary between browsers and operating systems. For users seeking more natural-sounding voices, using the Microsoft Edge browser (which has its own advanced TTS capabilities) or exploring third-party Chrome extensions/APIs that integrate local TTS services (such as Piper, Kokoro-FastAPI, or Orpheus-FastAPI) might provide an enhanced audio experience.
-*   When an AI message is received and TTS is active (the specific toggle/condition for TTS being active for message reading is usually found near the chat input or main settings), the `speakMessage` function is called.
-*   You can typically stop ongoing speech, and some controls might offer pause/resume, though these depend on browser support and how they are implemented in the main chat interface.
-
-## 13. Themes & Appearance
-
-You can customize the application's look and feel through the "Customize" section in the settings panel.
-
-### Predefined Themes
-The application comes with several built-in themes that change the color scheme:
-*   **Paper**: A light, parchment-like theme.
-*   **night-sepia**: A dark, soft theme.
-*   **Moss**: A theme with earthy tones.
-*   **Light**: A standard light mode theme.
-*   **Dark**: A standard dark mode theme.
-
-You can switch between these by selecting your desired theme.
-
-### Custom Theme
-*   You have the option to create a **Custom** theme.
-*   In the "Custom Theme Colors" area, you can pick specific colors for:
-    *   `bg` (Background)
-    *   `text` (Main text)
-    *   `active` (Active elements, accents)
-    *   `bold` (Bold text)
-    *   `italic` (Italic text)
-    *   `link` (Hyperlinks)
-    *   `mute` (Muted/secondary text)
-*   Selecting a color for any of these properties will typically automatically switch you to the "Custom" theme and apply your chosen colors.
-*   Your custom color choices are saved and will be reapplied when you select the "Custom" theme.
-
-### Appearance Toggles
-Within the "Customize" section, you can also find toggles for various visual elements:
-*   **Create chat title**: Enable or disable automatic generation of chat titles.
-*   **Background illustration**: Show or hide a background image/illustration in the chat panel.
-*   **Animated background**: Enable or disable background animations.
-*   **Paper texture**: Apply or remove a paper-like texture overlay, which complements themes like "Paper".
-
-### Font Size
-*   Adjust the global font size for the application using a slider.
-*   The range is typically from 7px to 20px.
-
-## 14. Language Settings
-
-You can change the display language of the InsightPage interface to your preferred language.
-
-1.  Open the main settings panel.
-2.  At the bottom of the settings panel, you will find the language switcher.
-3.  Click on the dropdown menu to see a list of available languages.
-4.  Select your desired language from the list. The application's interface will update instantly.
-
-## 15. Personas (AI Personalities) 
-
-Personas allow you to define and switch between different personalities or roles for the AI, tailoring its responses and behavior. You can manage personas in the "Persona" section of the main settings panel, and quickly select an active persona from the slide-out menu.
-
-### Selecting a Persona
-*   **From Main Settings:** In the "Persona" accordion, a dropdown menu shows all available personas. The currently selected persona's avatar is often displayed alongside.
-*   **From Slide-Out Menu:** The slide-out main menu (usually accessed from the top-left) also features a dropdown to quickly switch the active persona.
-
-The application will use the instructions and characteristics defined in the active persona's prompt to guide its responses.
-
-### Managing Personas
-Within the "Persona" section of the main settings panel:
-
-*   **Viewing/Editing Prompt:**
-    *   A text area displays the instructional prompt for the currently selected persona (e.g., "You are a witty pirate who speaks in rhymes.").
-    *   You can click into this text area to edit the prompt.
-*   **Saving Changes:**
-    *   **Save:** If you've edited the prompt for the current persona, click "Save" to update it.
-    *   **Save As...:** If you want to save your edited prompt as an entirely new persona, click "Save As...". This will open a dialog where you can give the new persona a name and optionally upload a custom avatar for it.
-    *   **Cancel:** Discards any unsaved changes to the current persona's prompt.
-*   **Creating a New Persona:**
-    *   Click the "Add" button (usually a `+` icon) to open the "Create New Persona" dialog.
-    *   **Name:** Enter a unique name for your new persona.
-    *   **Avatar:** You can upload a custom image to serve as the avatar for this persona. If no avatar is uploaded, a default one may be assigned.
-    *   **Prompt:** The prompt will initially be empty (if creating via "Add") or will contain the prompt you were editing (if using "Save As..."). You can define the persona's characteristics and instructions here.
-    *   Click "Create" to save the new persona. It will typically become the active one.
-*   **Deleting a Persona:**
-    *   A "Delete" button (usually a trash can icon) allows you to remove the currently selected persona. This option is often available only if you have more than one persona.
-    *   You'll be asked to confirm the deletion.
-    *   If the active persona is deleted, the application will switch to another available persona (often a default one like "Ein").
-
-### Default Persona
-The application usually comes with a default persona (e.g., "Ein," a general helpful assistant) that will be used if no other persona is selected or if your chosen persona is somehow unavailable.
-
-### Example Personas and Their Focus:
-InsightPage may offer a range of personas, each designed with a slightly different style and area of expertise. Examples include:
-*   **Ein:** Academic researcher - Good for in-depth analysis and factual information.
-*   **Warren:** Business analyst - Focuses on business and financial contexts.
-*   **Jet:** Friendly assistant - Provides general assistance with a conversational tone.
-*   **Agatha:** Creative thinker - Useful for brainstorming and imaginative tasks.
-*   **Jan:** Strategist - Helps with planning and strategic thinking.
-*   **Sherlock:** Detective - Ideal for problem-solving and uncovering details.
-*   **Spike:** All-around assistant - A versatile persona for various tasks.
-You can typically switch between personas in the InsightPage settings or directly within the side panel interface.
-
-## 16. Special Features
-
-The application includes several special features to enhance its contextual understanding and capabilities.
-
-### Automatic URL Content Scraping
-*   If you include one or more URLs (e.g., `https://example.com`) directly in your message to the AI, the application will attempt to fetch the content from these web addresses.
-*   This scraped content is then provided to the AI as additional context for formulating its response.
-*   This is useful if you want the AI to discuss, summarize, or answer questions about specific online articles or resources without needing to be in "Web Mode".
-
-### PDF Content Extraction (in Page Mode)
-*   As mentioned in the "Page Mode" section, when you are viewing a PDF document in your browser and activate Page Mode, the application will attempt to extract the text content from the PDF.
-*   This extracted text is then used as context for the AI, allowing you to ask questions about or summarize the PDF's content.
-
-## 17. Floating Assistant
-
-InsightPage includes a Floating Assistant, a powerful feature that brings the AI directly to your web page, allowing for seamless interaction without needing to open the side panel. It consists of a Floating Action Button (FAB) and a Floating Window.
-
-### Enabling the Floating Button
-You can enable the Floating Action Button from the settings menu:
-1.  Open the main slide-out menu and go to **Settings**.
-2.  Expand the **Page Mode Settings** section.
-3.  Toggle the switch for **Floating Action Button**.
-
-Once enabled, a circular button will appear on the edge of your web pages.
-
-### Using the Floating Action Button (FAB)
-*   **Click the FAB:** Clicking the button will instantly open the Floating Window.
-*   **Use the Shortcut:** You can also open the window with a keyboard shortcut (default is **Alt+I**). You can customize this shortcut in the "Page Mode Settings".
-*   **Drag to Reposition:** You can click and drag the FAB to any position along the left or right edges of your browser window to ensure it never gets in your way.
-
-### The Floating Window
-The Floating Window is a compact, movable chat interface that appears when you click the FAB. It's designed for quick, in-context conversations about the web page you are currently viewing. The window's header will display the title of the current page for easy reference.
-
-**Features:**
-*   **Automatic Page Summary:** When first opened on a page, the window can display an automated summary, helping you grasp key information instantly.
-*   **Ask About the Page:** The primary function is to ask questions, request summaries, or get insights about the content of the current page. The AI's responses are streamed directly into this window.
-*   **Reposition and Resize:**
-    *   You can drag the window anywhere on the screen by clicking and holding its header.
-    *   You can resize the window by dragging its corners or edges.
-    *   Your preferred size and position are automatically saved, so the window will appear exactly where you like it next time you open it.
-*   **Quick Actions:** The window header contains buttons for quick actions:
-    *   **Refresh:** Clears the current conversation in the floating window.
-    *   **Open in Side Panel:** Transfers the current conversation and context over to the main side panel for a more detailed interaction.
-    *   **Close:** Hides the floating window and returns you to the FAB.
-
-This feature is perfect for when you need a quick answer or summary without breaking your reading flow.
-
-## 18. Troubleshooting
-
-_(This section will be populated with common issues and solutions if any are apparent from the existing documentation or if common patterns for such extensions are known. Initially, it might contain general advice.)_
-
-*   **Extension Not Loading:**
-    *   Ensure Developer Mode is enabled in `chrome://extensions`.
-    *   Double-check that you selected the correct folder (the extracted folder for release, or `dist/chrome` for source install) when clicking "Load unpacked."
-*   **AI Not Responding:**
-    *   Check your AI model configuration in InsightPage's settings. Ensure API keys (for cloud services) are correctly entered or that your local model server (if used) is running and accessible.
-    *   If using a cloud model, verify your internet connection.
-    *   Try switching to a different AI model, a different persona to see if the issue is specific to one setting.
-*   **Summarization or Page Analysis Issues:**
-    *   Some web pages with very complex structures, dynamic content, or paywalls might be challenging for the extension to parse perfectly.
-    *   Ensure the page is fully loaded before asking InsightPage to summarize or analyze it.
-*   **High Token Usage or Slow Responses:**
-    *   If using a cloud service, check your usage limits and billing with the AI provider.
+Welcome to InsightPage! This guide introduces you to the core features of your intelligent browser assistant, helping you turn web browsing, research, and note-taking into a seamless, AI-powered workflow.
 
 ---
-This document aims to be a comprehensive guide. If you encounter issues not covered here or have suggestions, consider reporting them via the project's GitHub issues page.
+
+## System Overview & Information Flow
+
+Below are diagrams illustrating how InsightPage organizes its functionalities into four core pillars and how data flows between your browser, the AI, and your local files.
+
+### 1. The Four Core Pillars of InsightPage
+
+```mermaid
+graph TD
+    classDef default fill:#f9f9f9,stroke:#333,stroke-width:2px;
+    classDef highlight fill:#d4edda,stroke:#28a745,stroke-width:2px;
+
+    A[InsightPage Assistant] --> B(1. AI Chat Engine)
+    A --> C(2. Floating Assistant)
+    A --> D(3. Note Viewer & Vault)
+    A --> E(4. Context & Clipping)
+
+    class B,C,D,E highlight;
+```
+
+### 2. Information Flow Diagram
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as User / Browser Tab
+    participant FW as Floating Assistant
+    participant CP as Side Panel (Chat & Vault)
+    participant AI as AI Engine (Local/Cloud)
+    participant FS as Local Markdown Vault (PC)
+
+    User->>FW: Highlight text & Open Floating Window
+    FW->>AI: Send page context + User Query
+    AI-->>FW: Stream in-context answer
+    User->>CP: Clip content / Append to Note
+    CP->>FS: Save directly as standard Markdown file (.md)
+    CP->>AI: Run semantic hybrid search (RAG)
+```
+
+---
+
+## 1. AI Chat Engine
+
+InsightPage's side panel features a flexible, powerful chat interface that connects directly to local or cloud-based AI models.
+
+### Chat Modes
+
+* **Standard Chat Mode (`chat`)**: Converse with the AI using general knowledge and current conversation history.
+* **Web Mode (`web`)**: The AI optimizes your query, performs a live search, visits the top relevant pages to extract their main content, and provides a fully-sourced, up-to-date answer.
+* **Page Mode (`page`)**: The AI reads the active tab's content (including PDFs!) to let you summarize, ask questions, or run analysis instantly.
+
+### Hybrid RAG Search
+
+Type `/r` before a query (e.g., `/r key takeaways from project alpha`) to run a **Hybrid Search**. InsightPage combines:
+
+* **Keyword Search (BM25)**: Matches exact keywords in notes and chats.
+* **Semantic Search (Embeddings)**: Matches the underlying meaning and concepts of your query.
+* **MMR Reranking**: Re-sorts results to maximize relevance and reduce redundancy before feeding context to the LLM.
+
+### Smart Dispatcher
+
+When given complex tasks, the `smart_dispatcher` acts as your personal AI agent. It automatically coordinates multiple actions in a single step, such as:
+
+1. Searching the web.
+2. Fetching full article content.
+3. Generating structured summaries.
+4. Saving findings directly to your Note Viewer.
+
+---
+
+## 2. Floating Assistant
+
+The **Floating Assistant** brings the power of AI directly into your webpage, letting you interact with content seamlessly without opening the side panel.
+
+```mermaid
+graph LR
+    FAB[Floating Action Button] -->|Click| FW[Floating Window]
+    FW -->|Summary| QA[Automatic Page Summary & Q&A]
+    FW -->|Drag / Resize| Custom[Saved Layout Preferences]
+    FW -->|Export| SidePanel[Transfer Chat to Side Panel]
+
+    style FAB fill:#e1f5fe,stroke:#0288d1;
+    style FW fill:#e1f5fe,stroke:#0288d1;
+```
+
+* **Floating Action Button (FAB)**: A circular button that floats on the edge of your browser. You can drag it vertically to keep it out of your way.
+* **Floating Window**: Click the FAB to open a lightweight, movable, and resizable overlay window.
+* **In-Context Actions**:
+  * **Automatic Summaries**: Shows a quick page overview, tags, and sample questions when opened.
+  * **Seamless Chatting**: Ask questions directly about the page you are reading.
+  * **Quick Transfers**: Clear the chat with the **Refresh** button, or transfer the conversation to the main side panel with **Open in Side Panel**.
+
+For detailed setup and quick controls, check out the built-in guide:
+👉 **[[Using the Floating Assistant]]**
+
+---
+
+## 3. Note Viewer & Personal Vault
+
+The note-taking system serves as your second brain, offering full Markdown compatibility and native local-file integration.
+
+```mermaid
+graph TD
+    NV[Note System] -->|Double Click / Open| Tab[Full-Tab Note Editor]
+    Tab -->|AI Edit Request| Diff[Diff View: Original vs. AI suggested]
+    Diff -->|Accept / Decline| Final[.md File Saved Directly to PC]
+
+    style NV fill:#fff3e0,stroke:#f57c00;
+    style Tab fill:#fff3e0,stroke:#f57c00;
+```
+
+* **Local Markdown Vault**: Connect folders on your PC directly using the **File System Access API**. Notes are saved as standard `.md` files in real-time, functioning as a lightweight Obsidian-like setup. No IndexedDB cache layer is used in this mode, preventing write amplification and ensuring your local directories remain the single source of truth.
+* **Wikilinks & Deep Internal Linking (`[[Note Title]]`)**:
+  - Full Wikilink syntax support across notes, popovers, and chat responses.
+  - Type `[[Note Title]]` to link to any note in your vault. Clicking a Wikilink instantly navigates to that note—or automatically creates a new note with that title if it does not exist yet.
+  - Use `![[Note Title]]` for **transclusion/embedding**, embedding and rendering the contents of another note inline within your current document.
+* **Note Mentions (`@[Note Title]`) & Context Injection**:
+  - Type `@` in the chat input to search and attach specific notes directly into the AI context window.
+* **Select Notes for Q&A**: Select multiple notes from your Vault list and click **Start Q&A** to pre-fill note mentions (`@[Note Title]`) in the chat bar. The AI will answer queries using strictly the selected notes.
+* **Full-Page Tab Editor**: Open any note in a new browser tab for a spacious, distraction-free editing layout complete with adjustable font sizes.
+* **AI-Powered Note Editing & Diff View**:
+    1. Open your note in a new tab.
+    2. In the side panel, ask the AI to modify the note (e.g., *"Make this summary more concise"*, *"Translate to German"*).
+    3. View the real-time **Diff View** in your note tab, highlighting additions and deletions side-by-side.
+    4. Click **Accept** to commit the changes directly to your file, or **Decline** to keep the original.
+
+To see all supported Markdown renderings, including tabs, KaTeX math formulas (`$ ... $`, `$$ ... $$`), syntax-highlighted code blocks, Chart.js charts, and Mermaid diagrams, see:
+👉 **[[Rendering Showcase]]**
+
+---
+
+## 4. Context Window & Smart Clipping
+
+The input context bar and background processing allow you to easily collect information from around the web.
+
+* **Context Window Integration**: Drag files, images, or enter specific URLs into the chat's input context window. URLs are automatically scraped and used as additional prompt context.
+* **Smart Web Clipper**:
+  * Highlight any text on a webpage, right-click, and select **Add to Note** to append the text to your current popover note.
+  * Use the context menus to quickly capture insights without breaking your browsing momentum.
+* **Smart Weekly Notes**:
+  * Instantly create or open weekly review files with predefined action templates.
+  * Highlight text on any page, right-click, and select **Add to Weekly Note** to instantly append clean, sanitized web links (stripping analytical and tracking parameters) alongside your captured snippets.
+  * Customize action items and path folders under **Settings -> Page Mode Settings**.
+
+---
+
+## 5. Advanced & Multi-Modal Capabilities
+
+InsightPage is equipped with advanced underlying features to support multi-modal assets, zero-overhead storage, and deep language processing.
+
+### Multimodal Image & Vision Model Support
+
+* **Vision-Ready Uploads**: Upload standard image formats (`.png`, `.jpg`, `.jpeg`, `.webp`, `.gif`) using the chat input interface.
+* **Automatic Resolution & Quality Optimization**: To keep network payloads lightweight and prevent API timeouts, large images (longer side > 1568px) are automatically scaled down while maintaining aspect ratio. Large PNG images are automatically optimized to JPEG (90% quality with white background fallbacks) before dispatch.
+* **Native Vision Payloads**: Images are stripped from standard prompt text and sent as highly structured, OpenAI-compatible `image_url` vision payloads. This provides plug-and-play support for multi-modal local hosts (such as LM Studio) and cloud endpoints (such as GPT-4o).
+
+### Intelligent PDF Operations & Language Auto-Detection
+
+* **Dynamic Language Detection**: InsightPage uses an intelligent language detection engine. When downloading notes or chat summaries as PDFs, it auto-detects standard language families—including English, Spanish, German, French, Simplified Chinese (`zh-CN`), Traditional Chinese (`zh-TW`), Japanese, and Korean.
+* **One-Click PDF Generation**: No more manual dropdown menu configurations or nested option panels. The note action menu features a direct, one-click PDF download button that automatically pairs the correct system fonts (and runs high-performance regex checks for CJK rendering) based on the note's text content.
+* **Unified Background PDF Text Extraction**: When analyzing active PDF tabs, text parsing is delegated dynamically to background service worker scripts and offscreen document chunks. This prevents heavy third-party parsing engines (such as `pdfjs-dist`) from bloating the main frontend UI bundle.
+
+### Theme-Aware Design & Floating Window Polish
+
+* **Unified Custom Theme Palette Mapping**: When using a custom or active theme (like Moss, Night Sepia, or Dark), the entire interface—including dropdown selectors, settings panels, hover quick action menus, and modal dialogs—adapts perfectly. Custom color picker modals are lazy-loaded on-demand to keep initial extension boot speed lightning-fast.
+* **Theme-Aware Floating Tooltips**: Floating action windows and icon button tooltips leverage specialized CSS variables (`--tooltip-bg`, `--tooltip-fg`, and `--tooltip-border`) to guarantee that overlays match your selected persona theme exactly, rather than defaulting to standard black styling.
+* **Hover-Triggered Action Overlays**: Quick-action controls (such as web search mode switches) stay out of your way. They are hidden dynamically using smart tailwind group transitions, appearing instantly on container hover or input focus.
+
+---
+
+## 6. Privacy, Security & Data Ownership
+
+InsightPage is designed from the ground up with a **100% Privacy & Local-First Architecture**:
+
+* **Zero Data Collection**: InsightPage does not collect, track, aggregate, or sell any user data, search queries, browsing history, or notes.
+* **No Middleman Server & No Login**: There are no developer servers, no proxies, no registration forms, and no user logins.
+* **Direct Client-to-API Communication**: All communications occur **directly from your browser to your configured AI provider's API endpoint** (e.g., OpenAI, Gemini, Groq, OpenRouter) or local model server (e.g., Ollama, LM Studio).
+* **Local Key & Credential Storage**: Your API keys and endpoint settings are stored locally in your browser and are never sent anywhere else. Your model endpoints and data usage remain entirely your own responsibility and business.
+
+---
+
+## 7. Configuration & Settings Summary
+
+InsightPage is designed to be highly configurable. Access settings by clicking your persona's avatar in the top-left corner.
+
+* **API & LLM Access**: Connect to cloud APIs (OpenAI, Gemini, Groq, OpenRouter) or local servers (Ollama, LM Studio, or OpenAI-compatible custom endpoints). InsightPage is a **Bring Your Own Key (BYOK)** extension—you provide your own API keys or local server endpoints in **Settings -> API Access**.
+* **Model Parameters**: Fine-tune generation parameters (Temperature, Max Tokens, Top P, and Presence Penalty) or manage which models appear in your active list.
+* **AI Personas**: Select or create custom personalities (like Ein, Warren, or Jet) by uploading custom avatars and customizing system prompts.
+* **Themes & Customization**: Instantly switch between predefined themes (Paper, night-sepia, Moss, Light, Dark) or create a Custom Theme by specifying colors for text, background, accents, and links.
+* **Text-to-Speech (TTS)**: Let the AI read its responses out loud using your browser's built-in voices or advanced local TTS frameworks.
+* **Data Portability**: Go to the Share icon in the header to export your entire extension data as a secure `.zip` backup, or export individual chat logs as `.md`, `.txt`, `.json`, or `.png` images.
+
+---
+
+## 8. Troubleshooting Quick-Fixes
+
+* **AI fails to respond**: Verify your internet connection for cloud models, or ensure your local Ollama/LM Studio server is running on the correct port (e.g., `http://localhost:11434/v1`).
+* **RAG Search returns empty results**: If in **Manual Mode**, remember to open Embedding Management in the main menu and click **Rebuild** or **Update** to index your notes and chats.
+* **File System directory disconnects**: Browsers require user permission to access local folders after a restart. Go to the Note System and click "Reconnect" or select your folder again to restore access.
